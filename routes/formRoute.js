@@ -3,7 +3,7 @@ const Router = express.Router();
 
 const { submitForm, getForms } = require("../controllers/formController");
 
-const { protect, allowedTo } = require("../controllers/authController");
+const { protect } = require("../controllers/authController");
 
 
 Router.post("/submitForm", submitForm);
