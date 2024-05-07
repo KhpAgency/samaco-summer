@@ -52,24 +52,26 @@ exports.getForms = asyncHandler(async (req, res, next) => {
   const { channel } = req.query;
 
   try {
-    if (channel){
-      const forms = await formModel.find({ channel });
+    if (channel) {
+      const forms = await formModel.find({ channel }).sort({ createdAt: -1 });
 
       if (!forms) {
         return next(new ApiError(`No forms found for channel ${channel}`, 404));
       }
-  
-      res.status(200).json({ results: forms.length, message: "success", forms });
-  
+
+      res
+        .status(200)
+        .json({ results: forms.length, message: "success", forms });
     } else {
       const forms = await formModel.find({});
 
       if (!forms) {
         return next(new ApiError(`No forms found`, 404));
       }
-  
-      res.status(200).json({ results: forms.length, message: "success", forms });
-  
+
+      res
+        .status(200)
+        .json({ results: forms.length, message: "success", forms });
     }
   } catch (error) {
     console.log(error);
