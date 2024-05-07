@@ -63,7 +63,7 @@ exports.getForms = asyncHandler(async (req, res, next) => {
         .status(200)
         .json({ results: forms.length, message: "success", forms });
     } else {
-      const forms = await formModel.find({});
+      const forms = await formModel.find({}).sort({ createdAt: -1 });
 
       if (!forms) {
         return next(new ApiError(`No forms found`, 404));
