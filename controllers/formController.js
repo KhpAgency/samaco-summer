@@ -34,11 +34,10 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
 
     console.log("====================================");
     console.log("channel", channel);
-    console.log("chanel", chanel);
     console.log("====================================");
 
     const form = await formModel.create({
-      channel: channel === null ||"null" ? "instagram" : channel,
+      channel: channel === null ? "instagram" : channel,
       name,
       email,
       phone,
