@@ -34,12 +34,12 @@ const formSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-formSchema.pre("save", function (next){
-  const defaultValue = "general"
-  if (this.channel ===  null || this.channel === "null" || this.channel === "") {
-    this.channel = defaultValue;
-  }
-})
+// formSchema.pre("save", function (next){
+//   const defaultValue = "general"
+//   if (this.channel ===  null || this.channel === "null" || this.channel === "") {
+//     this.channel = defaultValue;
+//   }
+// })
 
 formSchema.pre("save", function (next) {
   const currentTime = moment()
