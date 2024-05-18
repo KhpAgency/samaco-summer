@@ -5,7 +5,7 @@ const formModel = require("../models/formModel");
 
 exports.submitForm = asyncHandler(async (req, res, next) => {
   try {
-    const { channel } = req.query;
+    const { channel,chanel } = req.query;
     const { name, email, phone, city, instagram_account } = req.body;
 
     const existEmail = await formModel.findOne({ email });
@@ -34,10 +34,11 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
 
     console.log("====================================");
     console.log("channel", channel);
+    console.log("chanel", chanel);
     console.log("====================================");
 
     const form = await formModel.create({
-      channel: channel === null ? "instagram" : channel,
+      channel: channel === null ||"null" ? "instagram" : channel,
       name,
       email,
       phone,
