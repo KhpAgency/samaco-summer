@@ -32,14 +32,6 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
       );
     }
 
-    console.log("====================================");
-    console.log("channel", channel);
-    console.log("channel== null", channel == null);
-    console.log("channel=== null", channel === null);
-    console.log("channel== 'null'", channel === 'null');
-    console.log("type of", typeof channel);
-    console.log("====================================");
-
     const form = await formModel.create({
       channel: channel == null || channel == "null"? "instagram" : channel,
       name,
