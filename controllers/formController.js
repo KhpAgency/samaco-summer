@@ -37,7 +37,7 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
     console.log("====================================");
 
     const form = await formModel.create({
-      channel: channel === null ? "instagram" : channel,
+      channel: channel == null ? "instagram" : channel,
       name,
       email,
       phone,
