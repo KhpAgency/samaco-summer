@@ -33,7 +33,7 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
     }
 
     const form = await formModel.create({
-      channel,
+      channel:channel || "general",
       name,
       email,
       phone,
