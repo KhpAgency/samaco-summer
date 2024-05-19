@@ -50,12 +50,12 @@ const server = app.listen(PORT, () => {
 pingServer();
 
 // Ping the server every 14 minutes (14 * 60 * 1000 milliseconds)
-const pingInterval = 13 * 60 * 1000;
+const pingInterval = 14 * 60 * 1000;
 setInterval(pingServer, pingInterval);
 
 // Function to ping the server by hitting the specified API route
 function pingServer() {
-  const pingEndpoint = 'https://samaco-summer.onrender.com/api/v1/auth/login';
+  const pingEndpoint = 'https://samaco-summer-1eox.onrender.comapi/v1/auth/login';
 
   // Send a GET request to the ping endpoint
   https.get(pingEndpoint, (res) => {
