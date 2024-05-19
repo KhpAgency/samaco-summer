@@ -55,7 +55,7 @@ setInterval(pingServer, pingInterval);
 
 // Function to ping the server by hitting the specified API route
 function pingServer() {
-  const pingEndpoint = 'https://samaco-summer-1eox.onrender.comapi/v1/auth/login';
+  const pingEndpoint = 'https://samaco-summer-1eox.onrender.com/api/v1/auth/login';
 
   // Send a GET request to the ping endpoint
   https.get(pingEndpoint, (res) => {
