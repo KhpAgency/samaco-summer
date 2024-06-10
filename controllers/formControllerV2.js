@@ -8,8 +8,8 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
     const { channel,chanel } = req.query;
     const { name, email, phone, city, instagram_account } = req.body;
 
-    const existEmail = await formModel.findOne({ email });
-    const existPhone = await formModel.findOne({ phone });
+    const existEmail = await formModel.findOne({ email ,apiVersion: 'v2' });
+    const existPhone = await formModel.findOne({ phone ,apiVersion: 'v2' });
 
     if (existEmail && existPhone) {
       return next(
