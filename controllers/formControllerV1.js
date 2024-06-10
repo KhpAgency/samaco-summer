@@ -5,7 +5,7 @@ const formModel = require("../models/formModel");
 
 exports.submitForm = asyncHandler(async (req, res, next) => {
   try {
-    const { channel,chanel } = req.query;
+    const { channel, chanel } = req.query;
     const { name, email, phone, city, instagram_account } = req.body;
 
     const existEmail = await formModel.findOne({ email });
@@ -33,12 +33,13 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
     }
 
     const form = await formModel.create({
-      channel: channel == null || channel == "null"? "instagram" : channel,
+      channel: channel == null || channel == "null" ? "instagram" : channel,
       name,
       email,
       phone,
       city,
       instagram_account,
+      apiVersion: "v1",
     });
 
     res.status(200).json({ message: "success", form });
@@ -52,27 +53,18 @@ exports.getForms = asyncHandler(async (req, res, next) => {
   const { channel } = req.query;
 
   try {
+    const query = { apiVersion: "v1" };
     if (channel) {
-      const forms = await formModel.find({ channel }).sort({ createdAt: -1 });
-
-      if (!forms) {
-        return next(new ApiError(`No forms found for channel ${channel}`, 404));
-      }
-
-      res
-        .status(200)
-        .json({ results: forms.length, message: "success", forms });
-    } else {
-      const forms = await formModel.find({}).sort({ createdAt: -1 });
-
-      if (!forms) {
-        return next(new ApiError(`No forms found`, 404));
-      }
-
-      res
-        .status(200)
-        .json({ results: forms.length, message: "success", forms });
+      query.channel = channel;
     }
+
+    const forms = await formModel.find(query).sort({ createdAt: -1 });
+
+    if (!forms) {
+      return next(new ApiError(`No forms found for channel ${channel}`, 404));
+    }
+
+    res.status(200).json({ results: forms.length, message: "success", forms });
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal server error");

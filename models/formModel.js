@@ -30,6 +30,10 @@ const formSchema = mongoose.Schema(
       type: String,
       required: [true, "instagram account is required"],
     },
+    apiVersion: {
+      type: String,
+      default: 'v1',
+    },
   },
   { timestamps: true }
 );

@@ -13,7 +13,8 @@ const dbConnection = require("./config/database");
 
 const authRoute = require("./routes/authRoute");
 const usersRoute = require("./routes/usersRoute");
-const formsRoute = require("./routes/formRoute");
+const formsRouteV1 = require("./routes/formRouteV1");
+const formsRouteV2 = require("./routes/formRouteV2");
 
 // Middlewares
 app.use(cors());
@@ -32,7 +33,8 @@ dbConnection();
 // Mount Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", usersRoute);
-app.use("/api/v1/forms", formsRoute);
+app.use("/api/v1/forms", formsRouteV1);
+app.use("/api/v2/forms", formsRouteV2);
 
 app.all("*", (req, res, next) => {
   next(new ApiError(`Can't find this route: ${req.originalUrl}`, 400));
@@ -45,6 +47,7 @@ app.use(globalError);
 const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 // Ping the server immediately after starting the server
 pingServer();
