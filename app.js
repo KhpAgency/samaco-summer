@@ -54,7 +54,7 @@ const server = app.listen(PORT, () => {
 
 // Ping the server every 14 minutes (14 * 60 * 1000 milliseconds)
 const pingInterval = 14 * 60 * 1000;
-setInterval(pingServer, pingInterval);
+// setInterval(pingServer, pingInterval);
 
 // Function to ping the server by hitting the specified API route
 function pingServer() {
