@@ -4,6 +4,11 @@ const ApiError = require("../utils/ApiError");
 const formModel = require("../models/formModel");
 
 exports.submitForm = asyncHandler(async (req, res, next) => {
+
+  console.log('====================================');
+  console.log("from v2");
+  console.log('====================================');
+
   try {
     const { channel,chanel } = req.query;
     const { name, email, phone, city, instagram_account } = req.body;
