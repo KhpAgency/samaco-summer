@@ -10,7 +10,7 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
   console.log('====================================');
 
   try {
-    const { channel,chanel } = req.query;
+    const { channel } = req.query;
     const { name, email, phone, city, instagram_account } = req.body;
 
     const existEmail = await formModel.findOne({ email ,apiVersion: 'v2' });
@@ -37,6 +37,10 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
       );
     }
 
+    console.log('====================================');
+    console.log("before creating");
+    console.log('====================================');
+
     const form = await formModel.create({
       channel: channel == null || channel == "null"? "instagram" : channel,
       name,
@@ -50,6 +54,9 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
 
     res.status(200).json({ message: "success", form });
   } catch (error) {
+    console.log('====================================');
+    console.log("in error");
+    console.log('====================================');
     console.log(error);
     res.status(500).send("Internal server error");
   }
