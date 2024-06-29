@@ -33,7 +33,7 @@ dbConnection();
 // Mount Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", usersRoute);
-app.use("/api/v1/forms", formsRouteV1);
+// app.use("/api/v1/forms", formsRouteV1);
 app.use("/api/v2/forms", formsRouteV2);
 
 app.all("*", (req, res, next) => {
