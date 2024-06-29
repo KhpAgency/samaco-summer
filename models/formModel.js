@@ -18,7 +18,6 @@ const formSchema = mongoose.Schema(
     },
     phone: {
       type: String,
-      unique: [true, "Phone must be unique"],
       required: [true, "phone is required"],
     },
     city: {
@@ -31,7 +30,6 @@ const formSchema = mongoose.Schema(
     },
     apiVersion: {
       type: String,
-      default: 'v1',
     },
   },
   { timestamps: true }
