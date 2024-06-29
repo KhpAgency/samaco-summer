@@ -13,11 +13,13 @@ const formSchema = mongoose.Schema(
     },
     email: {
       type: String,
+      unique: false,
       required: [true, "Email is required"],
       lowercase: true,
     },
     phone: {
       type: String,
+      unique: false,
       required: [true, "phone is required"],
     },
     city: {
