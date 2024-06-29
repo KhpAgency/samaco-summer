@@ -13,7 +13,6 @@ const formSchema = mongoose.Schema(
     },
     email: {
       type: String,
-      unique: [true, "Email must be unique"],
       required: [true, "Email is required"],
       lowercase: true,
     },
