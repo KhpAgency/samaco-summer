@@ -37,10 +37,6 @@ exports.submitForm = asyncHandler(async (req, res, next) => {
       );
     }
 
-    console.log('====================================');
-    console.log("before creating");
-    console.log('====================================');
-
     const form = await formModel.create({
       channel: channel == null || channel == "null"? "instagram" : channel,
       name,
