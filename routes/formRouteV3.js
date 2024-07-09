@@ -1,7 +1,7 @@
 const express = require("express");
 const Router = express.Router();
 
-const { submitForm, getForms } = require("../controllers/formControllerV2");
+const { submitForm, getForms } = require("../controllers/formControllerV3");
 
 const { protect } = require("../controllers/authController");
 
