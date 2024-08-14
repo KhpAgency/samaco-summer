@@ -56,7 +56,7 @@ const server = app.listen(PORT, () => {
 
 
 // Ping the server immediately after starting the server
-// pingServer();
+pingServer();
 
 // Ping the server every 14 minutes (14 * 60 * 1000 milliseconds)
 const pingInterval = 15 * 60 * 1000;
