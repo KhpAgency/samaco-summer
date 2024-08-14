@@ -16,6 +16,8 @@ const usersRoute = require("./routes/usersRoute");
 const formsRouteV1 = require("./routes/formRouteV1");
 const formsRouteV2 = require("./routes/formRouteV2");
 const formsRouteV3 = require("./routes/formRouteV3");
+const formsRouteV4 = require("./routes/formRouteV4");
+const formsRouteV5 = require("./routes/formRouteV5");
 
 // Middlewares
 app.use(cors());
@@ -37,6 +39,8 @@ app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/forms", formsRouteV1);
 app.use("/api/v2/forms", formsRouteV2);
 app.use("/api/v3/forms", formsRouteV3);
+app.use("/api/v4/forms", formsRouteV4);
+app.use("/api/v5/forms", formsRouteV5);
 
 app.all("*", (req, res, next) => {
   next(new ApiError(`Can't find this route: ${req.originalUrl}`, 400));
